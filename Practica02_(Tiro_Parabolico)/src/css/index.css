@@ -1,0 +1,17 @@
+.contenedor {
+  width: 90%;
+  height: 70vh;
+  background: #f4f4f4;
+  margin: 50px auto;
+  position: relative;
+  overflow: auto;
+}
+
+span {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  display: block;
+  position: absolute;
+  background: rgb(6, 22, 241);
+}

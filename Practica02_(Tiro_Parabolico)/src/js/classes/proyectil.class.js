@@ -36,7 +36,7 @@ class Proyectil {
             let left = this.calcularDistanciaX(tiempo);
             let bottom = this.calcularDistanciaY(tiempo);
 
-            if(left < 0 || bottom < 0 || left >= 100 || bottom >= 100) {
+            if(bottom < 0) {
                 break;
             }
 
@@ -45,14 +45,3 @@ class Proyectil {
         }
     }
 }
-
-let proyectil = new Proyectil(45, 45);
-
-proyectil.almacenarRecorrido();
-
-let posicionesX = proyectil.posicionesLeft;
-let posicionesY = proyectil.posicionesBotton;
-
-console.log(posicionesX);
-console.log(posicionesY);
-
