@@ -1,0 +1,9 @@
+.contenedorTexto {
+  height: 10vh;
+  width: 90%;
+  margin: 20px auto;
+  border: 2px solid #000;
+  text-align: center;
+  line-height: 50%;
+  font-size: 30px;
+}
