@@ -1,9 +1,20 @@
 .contenedorTexto {
-  height: 10vh;
-  width: 90%;
+  height: auto;
+  width: 70%;
   margin: 20px auto;
   border: 2px solid #000;
   text-align: center;
-  line-height: 50%;
-  font-size: 30px;
+  line-height: 120%;
+  font-size: 20px;
+  align-items: center;
+}
+
+.contenedorResultado {
+  height: auto;
+  width: 70%;
+  margin: 20px auto;
+  border: 2px solid #000;
+  text-align: center;
+  line-height: 120%;
+  font-size: 20px;
 }

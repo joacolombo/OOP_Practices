@@ -10,8 +10,21 @@ class UI{
       pantalla1.remove();
    }
 
+
+   eliminarPantalla2(){
+      let pantalla2 = document.getElementById("pantalla2");
+
+      pantalla2.remove();
+   }
+
+   eliminarPantalla3(){
+      let pantalla3 = document.getElementById("pantalla3");
+
+      pantalla3.remove();
+   }
+
    crearPantalla2(){
-      const pantalla2 = document.getElementById("pantalla2");
+      let pantalla2 = document.getElementById("pantalla2");
 
       //Crear div e insertar pregunta
       const divTexto = document.createElement("div");
@@ -49,22 +62,127 @@ class UI{
       pantalla2.appendChild(btnAbstencion);
       pantalla2.appendChild(btnFinalizar);
    }
+
+   renovarPantalla1(){
+
+      // CREAR TODO PANTALLA 1 DE NUEVO
+
+
+      /*
+      let pantalla1 = document.getElementById("pantalla4");
+      pantalla1.innerHTML = `
+      
+      <header>
+          <h1>Votaciones</h1>
+        </header>
+
+        <div class="form-group">
+          <label for="">Escriba el texto de la pregunta que sometera a votacion</label>
+          <textarea id="voteTopic" class="form-control" aria-describedby="helpId"></textarea>
+        </div>
+
+        <button type="button" name="" id="btnAceptar" class="btn btn-outline-primary btn-block">Aceptar</button>
+      
+      `;
+      */
+      
+      
+      let pantalla4 = document.getElementById("pantalla4");
+
+      const header = document.createElement("header");
+   
+      const h1 = document.createElement("h1");
+      h1.innerText = "Votaciones";
+   
+      const formGroup = document.createElement("div");
+      formGroup.setAttribute("class", "form-group");
+   
+      const label = document.createElement("label")
+      label.innerText = "Escriba el texto de la pregunta que sometera a votacion";
+   
+      const textArea = document.createElement("textarea");
+      textArea.setAttribute("class", "form-control");
+      textArea.setAttribute("aria-describedby", "helpId");
+      textArea.setAttribute("id", "voteTopic");
+   
+      const button = document.createElement("button");
+      button.innerText = "Aceptar";
+      button.setAttribute("class", "btn btn-outline-primary btn-block");
+      button.setAttribute("id", "btnAceptar");
+      
+      
+      pantalla4.appendChild(header);
+      header.appendChild(h1);
+      pantalla4.appendChild(formGroup);
+      formGroup.appendChild(label);
+      formGroup.appendChild(textArea);
+      pantalla4.appendChild(button);
+      
+
+      let btnAceptar = document.getElementById("btnAceptar");
+      btnAceptar.addEventListener("click", eliminarPantallas);
+   }
+
+   showVote(){
+      const pantalla3 = document.getElementById("pantalla3");
+
+      const div = document.createElement("div");
+      div.setAttribute("class", "contenedorResultado")
+      div.innerHTML = `
+      ${this.textoVotar}
+      <br>
+      El numero de votos a favor es: ${votacion.aFavor}
+      <br>
+      El numero de votos en contra es: ${votacion.enContra}
+      <br>
+      El numero de abstenciones es: ${votacion.abstencion}
+      `;
+      const btn = document.createElement("button");
+      btn.innerText = "Reiniciar";
+      btn.setAttribute("class", "btn btn-outline-primary btn-block");
+      btn.setAttribute("id", "btnReiniciar");
+
+      pantalla3.appendChild(div);
+      pantalla3.appendChild(btn);
+      
+      let btnReiniciar = document.getElementById("btnReiniciar");
+      btnReiniciar.addEventListener("click", renovarPantallas)
+
+   }
 }
 
 let btnAceptar = document.getElementById("btnAceptar");
-
 btnAceptar.addEventListener("click", eliminarPantallas);
 
 const votacion = new Votacion();
+const ui = new UI();
 
 function eliminarPantallas(){
-   const ui = new UI();
-
    ui.eliminarPantalla1();
    ui.crearPantalla2();
    document.addEventListener("click", validarClick);
 }
 
+function renovarPantallas(){
+   console.log("entre");
+   ui.eliminarPantalla3();
+   ui.renovarPantalla1();
+   pantalla1 = "";
+}
+
 function validarClick(event){
-   votacion.increaseVote(event.target.id);
+
+   if (event.target.id != "btnFinalizar"){
+
+      votacion.increaseVote(event.target.id);
+
+   }else{
+
+      ui.eliminarPantalla2();
+      ui.showVote();
+
+      votacion.aFavor = 0;
+      votacion.enContra = 0;
+      votacion.abstencion = 0;
+   }
 }

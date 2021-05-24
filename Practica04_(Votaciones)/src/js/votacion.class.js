@@ -17,7 +17,7 @@ class Votacion{
                 this.abstencion++;
                 break;
         }
-
+        
         console.log(this.aFavor, this.enContra, this.abstencion);
     }
 }
